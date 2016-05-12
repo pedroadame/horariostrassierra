@@ -15,6 +15,7 @@ La aplicación estará accesible en https://www.horariostrassierra.me
 * Lenguaje principal: Ruby 2.3.0
 * Framework web MVC: Ruby on Rails 4.2.6
 * Framework de pruebas: Minitest
+* Preprocesador de estilos: Sass
 * Gemas: Ver archivo Gemfile
 * Base de datos:
     * Desarrollo y pruebas: Sqlite3
