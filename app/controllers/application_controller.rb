@@ -1,5 +1,9 @@
+# Clase ApplicationController.
+# Provee de funcionalidad adicional a todos los controladores.
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+  # Previene ataques CSRF
   protect_from_forgery with: :exception
+
+  def index
+  end
 end
