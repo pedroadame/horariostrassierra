@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514221006) do
+ActiveRecord::Schema.define(version: 20160515102753) do
 
   create_table "class_hours", force: :cascade do |t|
     t.integer  "teacher_id", null: false
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20160514221006) do
     t.string   "abbreviation"
     t.string   "name"
     t.string   "level"
-    t.string   "code"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
