@@ -1,0 +1,2 @@
+class XmlImportController < ApplicationController
+end
