@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+clase1:
+  group: daw
+  teacher: jose
+  room: i1
+  subject: php
+  hour: lunes1
+
+clase2:
+  group: dam
+  teacher: elena
+  room: t01
+  subject: lengua
+  hour: martes4

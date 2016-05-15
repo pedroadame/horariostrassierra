@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+lengua:
+  abbreviation: LEN
+  name: Lengua y Literatura
+  level: 1ESO
+  code: 12345678
+  course: 1o de ESO
+
+php:
+  abbreviation: DES
+  name: Desarrollo Web en Entorno Servidor
+  level: FP
+  code: 987654321
+  course: 2 DAW

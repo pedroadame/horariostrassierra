@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+daw:
+  abbreviation: 1DAW
+  name: Des Apl Web
+  level: FPGS
+  code: 78451232
+  course: 1 DAW
+  teacher: jose
+
+dam:
+  abbreviation: 2DAM
+  name: Des Apl Mult
+  level: FPGS
+  code: 852143
+  course: 2 DAM

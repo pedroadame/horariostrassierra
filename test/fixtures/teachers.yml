@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+jose:
+  abbreviation: LEN1
+  name: Jose Castizo
+  level: LEN
+
+elena:
+  abbreviation: FRA1
+  name: Elena Lopez
+  level: FRA

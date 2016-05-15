@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+i1:
+  abbreviation: I1
+  name: Informatica 1
+  level: FPGS
+  code: 121212
+
+t01:
+  abbreviation: T01
+  name: Aula 01
+  level: ESO
+  code: 00001
