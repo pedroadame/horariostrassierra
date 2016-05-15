@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TRAMO">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="num_tr" use="optional"/>
+          <xs:attribute type="xs:string" name="codigo" use="optional"/>
+          <xs:attribute type="xs:string" name="numero_dia" use="optional"/>
+          <xs:attribute type="xs:string" name="numero_hora" use="optional"/>
+          <xs:attribute type="xs:string" name="hora_inicio" use="optional"/>
+          <xs:attribute type="xs:string" name="hora_final" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CENTRO">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="DATOS"/>
+        <xs:element ref="HORARIOS"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="nombre_centro"/>
+      <xs:attribute type="xs:string" name="autor"/>
+      <xs:attribute type="xs:string" name="fecha"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIO_GRUP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ACTIVIDAD" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="hor_num_int_gr" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_un" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_ac" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GRUPO">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="num_int_gr" use="optional"/>
+          <xs:attribute type="xs:string" name="abreviatura" use="optional"/>
+          <xs:attribute type="xs:string" name="nombre" use="optional"/>
+          <xs:attribute type="xs:string" name="nivel" use="optional"/>
+          <xs:attribute type="xs:string" name="codigo" use="optional"/>
+          <xs:attribute type="xs:string" name="curso" use="optional"/>
+          <xs:attribute type="xs:string" name="num_pr_tutor_principal" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DATOS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ASIGNATURAS"/>
+        <xs:element ref="GRUPOS"/>
+        <xs:element ref="AULAS"/>
+        <xs:element ref="PROFESORES"/>
+        <xs:element ref="TRAMOS_HORARIOS"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ASIGNATURA">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="num_int_as" use="optional"/>
+          <xs:attribute type="xs:string" name="abreviatura" use="optional"/>
+          <xs:attribute type="xs:string" name="nombre" use="optional"/>
+          <xs:attribute type="xs:string" name="nivel" use="optional"/>
+          <xs:attribute type="xs:string" name="codigo" use="optional"/>
+          <xs:attribute type="xs:string" name="curso" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PROFESOR">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="num_int_pr" use="optional"/>
+          <xs:attribute type="xs:string" name="abreviatura" use="optional"/>
+          <xs:attribute type="xs:string" name="nombre" use="optional"/>
+          <xs:attribute type="xs:string" name="nivel" use="optional"/>
+          <xs:attribute type="xs:string" name="num_gr_tutoria_principal" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRAMOS_HORARIOS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TRAMO" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="tot_tr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ASIGNATURAS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ASIGNATURA" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="tot_as"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIO_PROF">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ACTIVIDAD" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="hor_num_int_pr" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_un" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_ac" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIOS_AULAS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="HORARIO_AULA" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AULAS">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="AULA"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="tot_au"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIO_ASIG">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="ACTIVIDAD"/>
+      </xs:choice>
+      <xs:attribute type="xs:string" name="hor_num_int_as" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_un" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_ac" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIOS_PROFESORES">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="HORARIO_PROF" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AULA">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="num_int_au" use="optional"/>
+          <xs:attribute type="xs:string" name="abreviatura" use="optional"/>
+          <xs:attribute type="xs:string" name="nombre" use="optional"/>
+          <xs:attribute type="xs:string" name="nivel" use="optional"/>
+          <xs:attribute type="xs:string" name="codigo" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ACTIVIDAD">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="GRUPOS_ACTIVIDAD" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="num_act" use="optional"/>
+      <xs:attribute type="xs:string" name="num_un" use="optional"/>
+      <xs:attribute type="xs:string" name="tramo" use="optional"/>
+      <xs:attribute type="xs:string" name="aula" use="optional"/>
+      <xs:attribute type="xs:string" name="profesor" use="optional"/>
+      <xs:attribute type="xs:string" name="asignatura" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIOS_GRUPOS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="HORARIO_GRUP" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GRUPOS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="GRUPO" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="tot_gr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIO_AULA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ACTIVIDAD" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="hor_num_int_au" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_un" use="optional"/>
+      <xs:attribute type="xs:string" name="tot_ac" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIOS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="HORARIOS_ASIGNATURAS"/>
+        <xs:element ref="HORARIOS_GRUPOS"/>
+        <xs:element ref="HORARIOS_AULAS"/>
+        <xs:element ref="HORARIOS_PROFESORES"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HORARIOS_ASIGNATURAS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="HORARIO_ASIG" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PROFESORES">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="PROFESOR" maxOccurs="unbounded" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="tot_pr"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GRUPOS_ACTIVIDAD">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="tot_gr_act" use="optional"/>
+          <xs:attribute type="xs:string" name="grupo_1" use="optional"/>
+          <xs:attribute type="xs:string" name="grupo_2" use="optional"/>
+          <xs:attribute type="xs:string" name="grupo_3" use="optional"/>
+          <xs:attribute type="xs:string" name="grupo_4" use="optional"/>
+          <xs:attribute type="xs:string" name="grupo_5" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
