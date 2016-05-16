@@ -20,9 +20,9 @@ class TeacherTest < ActiveSupport::TestCase
     assert_not @teacher.valid?
   end
 
-  test 'nivel es obligatorio' do
+  test 'nivel es opcional' do
     @teacher.level = '    '
-    assert_not @teacher.valid?
+    assert @teacher.valid?
   end
 
   test 'grupo debe ser opcional' do

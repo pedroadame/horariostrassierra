@@ -20,13 +20,13 @@ class SubjectTest < ActiveSupport::TestCase
     assert_not @subject.valid?
   end
 
-  test 'nivel es obligatorio' do
+  test 'nivel es opcional' do
     @subject.code = '     '
-    assert_not @subject.valid?
+    assert @subject.valid?
   end
 
-  test 'curso es obligatorio' do
+  test 'curso es opcional' do
     @subject.course = '    '
-    assert_not @subject.valid?
+    assert @subject.valid?
   end
 end

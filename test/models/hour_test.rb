@@ -38,26 +38,29 @@ class HourTest < ActiveSupport::TestCase
   end
 
   test 'inicio debe ser obligatorio' do
-    @hour.start = nil
+    @hour.start = '   '
     assert_not @hour.valid?
   end
 
   test 'fin debe ser obligatorio' do
-    @hour.end = nil
+    @hour.end = '   '
     assert_not @hour.valid?
   end
 
   test 'debe aceptar horas validas' do
-    horas_validas = %w(00:00 23:59 14:00 08:15 09:20 17:30)
+    horas_validas = %w(00:00 23:59 14:00 8:15 08:15 09:20 17:30)
     horas_validas.each do |hora|
       @hour.start = hora
       @hour.end = hora
       assert @hour.valid?, "#{hora} deberia ser valida"
     end
+    @hour.start = ' 9:00'
+    @hour.end = '10:00'
+    assert @hour.valid?
   end
 
   test 'debe rechazar horas invalidas' do
-    horas_invalidas = %w(34:00 24:00 34:0 00;00 04:60 14::00 16.00 30:00 8:15 0:00)
+    horas_invalidas = %w(34:00 24:00 34:0 00;00 04:60 14::00 16.00 30:00)
     horas_invalidas.each do |hora|
       @hour.start = hora
       @hour.end = hora
@@ -65,4 +68,11 @@ class HourTest < ActiveSupport::TestCase
     end
   end
 
+  test 'debe procesar horas en formato #:## y _#:##' do
+    @hour.start = ' 0:00'
+    @hour.end = '9:00'
+    assert @hour.valid?
+    assert_equal @hour.start, '00:00'
+    assert_equal @hour.end, '09:00'
+  end
 end

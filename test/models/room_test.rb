@@ -10,9 +10,9 @@ class RoomTest < ActiveSupport::TestCase
     assert @room.valid?
   end
 
-  test 'abreviatura es obligatoria' do
+  test 'abreviatura es opcional' do
     @room.abbreviation = '  '
-    assert_not @room.valid?
+    assert @room.valid?
   end
 
   test 'nombre es obligatorio' do
@@ -20,13 +20,13 @@ class RoomTest < ActiveSupport::TestCase
     assert_not @room.valid?
   end
 
-  test 'nivel es obligatorio' do
+  test 'nivel es opcional' do
     @room.level = '   '
-    assert_not @room.valid?
+    assert @room.valid?
   end
 
-  test 'codigo es obligatorio' do
+  test 'codigo es opcional' do
     @room.code = '   '
-    assert_not @room.valid?
+    assert @room.valid?
   end
 end

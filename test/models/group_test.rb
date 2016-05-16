@@ -20,19 +20,19 @@ class GroupTest < ActiveSupport::TestCase
     assert_not @group.valid?
   end
 
-  test 'nivel es obligatorio' do
+  test 'nivel es opcional' do
     @group.level = '   '
-    assert_not @group.valid?
+    assert @group.valid?
   end
 
-  test 'codigo es obligatorio' do
+  test 'codigo es opcional' do
     @group.code = '   '
-    assert_not @group.valid?
+    assert @group.valid?
   end
 
-  test 'curso es obligatorio' do
+  test 'curso es opcional' do
     @group.course = '  '
-    assert_not @group.valid?
+    assert @group.valid?
   end
 
   test 'tiene profesor opcional' do
