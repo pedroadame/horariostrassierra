@@ -8,14 +8,14 @@ module XmlImportHelper
     xml = Nokogiri::XML doc
     Dir.chdir Rails.public_path do
       schema = Nokogiri::XML::Schema(IO.read('database.xsd'))
-      val = schema.validate(xml)
+      errors = schema.validate(xml)
       valido = schema.valid? xml
-      if valido && val.empty?
+      if valido && errors.empty?
         logger.debug '---------------- Todo correcto'
         replace_db xml
       else
         logger.debug '---------------- Hay errores'
-        val.each do |e|
+        errors.each do |e|
           logger.debug "Error: #{e.message}"
         end
       end
