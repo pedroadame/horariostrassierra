@@ -1,7 +1,5 @@
 <h1>Subida completa.</h1>
-<h2>Errores</h2>
-<%= @val %>
-<h2>Valido?</h2>
-<%= @valido %>
-<h3>Datos</h3>
-<%= @data %>
+<% if @errors.any? %>
+    <h3>Error!</h3>
+    <p>Parece ser que el archivo XML no cumple con el XSD que tenemos. :(</p>
+<% end %>
