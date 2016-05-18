@@ -15,12 +15,17 @@ class Hour < ActiveRecord::Base
   has_many :class_hours
 
   class << self
-    def now(hora = nil)
-      ahora = hora || Time.now.strftime('%H:%M')
-      consulta = self.arel_table[:day].eq(Time.now.wday)
-                     .and(self.arel_table[:start].lteq(ahora)
-                              .and(self.arel_table[:end].gt(ahora)))
-      where(consulta)
+    def search(params = {})
+      params[:day] ||= Time.now.wday
+      params[:hour] ||= Time.now.strftime('%H:%M')
+      filter = self.arel_table[:day].eq(params[:day])
+                     .and(self.arel_table[:start].lteq(params[:hour])
+                              .and(self.arel_table[:end].gt(params[:hour])))
+      where(filter)
+    end
+
+    def now
+      search
     end
   end
 
