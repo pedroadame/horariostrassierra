@@ -25,4 +25,8 @@ class RoomTest < ActiveSupport::TestCase
     assert @room.valid?
   end
 
+  test 'codigo es opcional' do
+    @room.code = '   '
+    assert @room.valid?
+  end
 end
