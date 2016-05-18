@@ -5,4 +5,5 @@ class Group < ActiveRecord::Base
 
   # Relación con Profesor
   belongs_to :teacher
+  has_many :class_hours
 end
