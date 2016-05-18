@@ -3,7 +3,8 @@ require 'test_helper'
 class GroupTest < ActiveSupport::TestCase
 
   def setup
-    @group = Group.new(abbreviation: '1ESOA', name: 'Primero de ESO', level: 'ESO', code: '232323', course: '1 ESO')
+    @group = Group.new(abbreviation: '1ESOA', name: 'Primero de ESO',
+                       level: 'ESO', code: '232323', course: '1 ESO')
   end
 
   test 'debe ser valido' do
