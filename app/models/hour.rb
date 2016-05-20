@@ -17,28 +17,33 @@ class Hour < ActiveRecord::Base
   class << self
     def search(params = {})
       params[:day] ||= Time.now.wday
-      params[:hour] ||= Time.now.strftime('%H:%M')
+      hour = parse_hour(params[:hour]) || Time.now.strftime('%H:%M')
       filter = self.arel_table[:day].eq(params[:day])
-                     .and(self.arel_table[:start].lteq(params[:hour])
-                              .and(self.arel_table[:end].gt(params[:hour])))
+                   .and(self.arel_table[:start].lteq(hour)
+                            .and(self.arel_table[:end].gt(hour)))
       where(filter).first
     end
 
     def now
       search
     end
+
+    def parse_hour(hour)
+      if hour && (match = hour.match PARSE_REGEX)
+        '0' << match[1]
+      else
+        hour
+      end
+    end
   end
+
 
   private
   def parse_start_hour
-    if (match = self.start.match PARSE_REGEX)
-      self.start = '0' << match[1]
-    end
+    self.start = Hour.parse_hour(self.start)
   end
 
   def parse_end_hour
-    if (match = self.end.match PARSE_REGEX)
-      self.end = '0' << match[1]
-    end
+    self.end = Hour.parse_hour(self.end)
   end
 end
