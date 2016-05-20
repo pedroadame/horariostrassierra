@@ -21,7 +21,7 @@ class Hour < ActiveRecord::Base
       filter = self.arel_table[:day].eq(params[:day])
                      .and(self.arel_table[:start].lteq(params[:hour])
                               .and(self.arel_table[:end].gt(params[:hour])))
-      where(filter)
+      where(filter).first
     end
 
     def now

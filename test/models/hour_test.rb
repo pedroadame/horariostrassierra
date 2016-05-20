@@ -75,4 +75,48 @@ class HourTest < ActiveSupport::TestCase
     assert_equal @hour.start, '00:00'
     assert_equal @hour.end, '09:00'
   end
+
+  test 'debe devolver hora actual' do
+    hora = Hour.now
+    if hora.nil?
+      h = Hour.new(code: '123', day: Time.now.wday, hour: 1, start: Time.now.beginning_of_hour.hh_mm, end: (Time.now + 1.hour).beginning_of_hour.hh_mm)
+      assert_nil Hour.now
+      h.save
+      assert_not_nil Hour.now
+      # h.destroy
+    else
+      assert_equal hora.day, Time.now.wday
+      assert_equal hora.start, Time.now.beginning_of_hour.hh_mm
+      assert_equal hora.end, (Time.now + 1.hour).beginning_of_hour.hh_mm
+    end
+  end
+
+  test 'debe devolver hora solicitada' do
+    assert_nil Hour.search day: 2, hour: "19:34"
+    h_start = Time.now.change(hour: 19, min: 00).hh_mm
+    h_end = Time.now.change(hour: 20, min: 00).hh_mm
+    Hour.create!(code: '123', day: 2, hour: 1, start: h_start, end: h_end)
+    assert_not_nil Hour.search day: 2, hour: "19:34"
+  end
+
+  test 'debe devolver hora solicitada y dia actual' do
+    assert_nil Hour.search hour: "19:34"
+    h_start = Time.now.change(hour: 19, min: 00).hh_mm
+    h_end = Time.now.change(hour: 20, min: 00).hh_mm
+    Hour.create!(code: '123', day: Time.now.wday, hour: 1, start: h_start, end: h_end)
+    h = Hour.search hour: "19:34"
+    assert_not_nil h
+    assert_equal h.day, Time.now.wday
+  end
+
+  test 'debe devolver dia solicitado y hora actual' do
+    assert_nil Hour.search day: 5
+    h_start = Time.now.change(hour: 19, min: 00).hh_mm
+    h_end = Time.now.change(hour: 20, min: 00).hh_mm
+    Hour.create!(code: '123', day: Time.now.wday, hour: 1, start: Time.now.beginning_of_hour.hh_mm, end: (Time.now + 1.hour).beginning_of_hour.hh_mm)
+    h = Hour.search day: 5
+    assert_not_nil h
+    assert_equal h.start, h_start
+    assert_equal h.end, h_end
+  end
 end
