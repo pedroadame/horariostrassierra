@@ -4,12 +4,12 @@ lunes1:
   code: 878787
   day: 1
   hour: 1
-  start: 08:15
-  end: 09:15
+  start: "08:15"
+  end: "09:15"
 
 martes4:
   code: 787878
   day: 2
   hour: 4
-  start: 11:45
-  end: 12:45
+  start: "11:45"
+  end: "12:45"

@@ -8,10 +8,10 @@ class Teacher < ActiveRecord::Base
   # de forma simple.
   has_one :group
   has_many :class_hours
-  has_many :subjects, through: :class_hours
 
-  def where_is(day = nil, hour = nil)
-    self.class_hours.where(hour: Hour.search(day, hour))
+  def search(params = {})
+    self.class_hours.where(hour: Hour.search(day: params[:day],
+                                             hour: params[:hour])).first
   end
 
   def has_group?
