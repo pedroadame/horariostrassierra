@@ -5,7 +5,7 @@ class Hour < ActiveRecord::Base
 
   validates :code, presence: true
   validates :day, numericality: {
-      only_integer: true, greater_than: 0, less_than_or_equal_to: 5}
+      only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 6}
   validates :hour, numericality: {
       only_integer: true, greater_than: 0, less_than_or_equal_to: 14}
   validates :start, format: {with: HOUR_REGEX}, presence: true

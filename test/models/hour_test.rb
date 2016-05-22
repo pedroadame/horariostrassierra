@@ -15,14 +15,14 @@ class HourTest < ActiveSupport::TestCase
     assert_not @hour.valid?
   end
 
-  test 'dia debe estar entre 1..5' do
-    @hour.day = 0
+  test 'dia debe estar entre 0..6' do
+    @hour.day = -1
     assert_not @hour.valid?
-    1.upto(5) do |n|
+    0.upto(6) do |n|
       @hour.day = n
       assert @hour.valid?
     end
-    @hour.day = 6
+    @hour.day = 7
     assert_not @hour.valid?
   end
 
@@ -79,11 +79,8 @@ class HourTest < ActiveSupport::TestCase
   test 'debe devolver hora actual' do
     hora = Hour.now
     if hora.nil?
-      h = Hour.new(code: '123', day: Time.now.wday, hour: 1, start: Time.now.beginning_of_hour.hh_mm, end: (Time.now + 1.hour).beginning_of_hour.hh_mm)
-      assert_nil Hour.now
-      h.save
+      create_actual_hour
       assert_not_nil Hour.now
-      # h.destroy
     else
       assert_equal hora.day, Time.now.wday
       assert_equal hora.start, Time.now.beginning_of_hour.hh_mm
@@ -110,14 +107,16 @@ class HourTest < ActiveSupport::TestCase
   end
 
   test 'debe devolver dia solicitado y hora actual' do
-    assert_nil Hour.search day: 5
+    hora = Hour.search day: 5
     h_start = Time.now.beginning_of_hour.hh_mm
     h_end =  (Time.now + 1.hour).beginning_of_hour.hh_mm
-    Hour.create!(code: '123', day: Time.now.wday, hour: 1, start: Time.now.beginning_of_hour.hh_mm, end: (Time.now + 1.hour).beginning_of_hour.hh_mm)
-    h = Hour.search day: 5
-    assert_not_nil h
-    assert_equal h.start, h_start
-    assert_equal h.end, h_end
+    if hora.nil?
+      Hour.create!(code: '123', day: 5, hour: 1, start: Time.now.beginning_of_hour.hh_mm, end: (Time.now + 1.hour).beginning_of_hour.hh_mm)
+      hora = Hour.search day: 5
+    end
+    assert_not_nil hora
+    assert_equal hora.start, h_start
+    assert_equal hora.end, h_end
   end
 
   test 'debe procesar la hora no escrita en formato ##:## al buscar' do
