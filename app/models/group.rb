@@ -15,8 +15,4 @@ class Group < ActiveRecord::Base
   def actual_teacher
     self.search&.teacher || nil
   end
-
-  def team
-
-  end
 end
