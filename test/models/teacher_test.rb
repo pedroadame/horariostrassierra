@@ -54,4 +54,14 @@ class TeacherTest < ActiveSupport::TestCase
     # Compruebo que el profesor está impartiendo clase actualmente
     assert_equal prof.search.hour, hora
   end
+
+  test 'obtener profesores de guardia' do
+    t = teachers(:jose)
+    ClassHour.create!(teacher: t, hour: create_actual_hour,
+                      subject: subjects(:guardia), room: rooms(:t01),group:
+                          groups(:guardia))
+    assert_not_nil Teacher.in_guard
+    assert_equal 1, Teacher.in_guard.count
+    assert_equal teachers(:jose).search.subject, subjects(:guardia)
+  end
 end

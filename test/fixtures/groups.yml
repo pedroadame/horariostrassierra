@@ -14,3 +14,7 @@ dam:
   level: FPGS
   code: 852143
   course: 2 DAM
+
+guardia:
+  abbreviation: GUARD
+  name: GUARDIA

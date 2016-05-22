@@ -13,3 +13,9 @@ php:
   level: FP
   code: 987654321
   course: 2 DAW
+
+guardia:
+  abbreviation: GUARD
+  name: GUARDIA
+  level: SG
+  code: S25          NN
