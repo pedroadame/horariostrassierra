@@ -71,8 +71,7 @@ class XmlImportController < ApplicationController
       Room.create!(id: a['num_int_au'],
                    abbreviation: a['abreviatura'],
                    name: a['nombre'],
-                   level: a['nivel'],
-                   code: a['codigo'])
+                   level: a['nivel'])
     end
 
     data.xpath("//TRAMO").each do |t|

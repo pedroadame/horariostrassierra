@@ -42,4 +42,44 @@ class GroupTest < ActiveSupport::TestCase
     assert_not_nil grupo.teacher
     assert grupo.valid?
   end
+
+
+  # TODO: Preguntar a City como mejorar esta mierda
+  # Probablemente se arregle cuando se cierre #9
+  test 'devuelve hora de clase actual' do
+    group = groups(:daw)
+    hora_clase_actual = group.search
+    if hora_clase_actual.nil?
+      group.class_hours.build(hour: create_actual_hour,
+                              teacher: teachers(:jose),
+                              room: rooms(:i1),
+                              subject: subjects(:php))
+      group.save!
+      group.reload
+    end
+    hora_clase_actual = group.search
+    assert_not_nil hora_clase_actual
+    assert_equal hora_clase_actual.hour, Hour.now
+  end
+
+  test 'devuelve el profesor que le da clase en este momento' do
+    group = groups(:daw)
+    hora_clase_actual = group.search
+    if hora_clase_actual.nil?
+      group.class_hours.build(hour: create_actual_hour,
+                              teacher: teachers(:jose),
+                              room: rooms(:i1),
+                              subject: subjects(:php))
+      group.save!
+      group.reload
+    end
+    assert_not_nil group.actual_teacher
+    assert_equal group.actual_teacher, teachers(:jose)
+  end
+
+  test 'devuelve nil cuando no tiene clase ahora' do
+    g = groups(:daw)
+    ClassHour.where(group: g).delete_all
+    assert_nil g.actual_teacher
+  end
 end
