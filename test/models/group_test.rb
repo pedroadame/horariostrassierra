@@ -82,4 +82,11 @@ class GroupTest < ActiveSupport::TestCase
     ClassHour.where(group: g).delete_all
     assert_nil g.actual_teacher
   end
+
+  test 'obtiene el equipo educativo' do
+    g = groups(:daw)
+    assert_equal 2, g.teachers.count
+    assert_not_nil g.teachers.where(id: teachers(:jose).id)
+    assert_not_nil g.teachers.where(id: teachers(:elena).id)
+  end
 end

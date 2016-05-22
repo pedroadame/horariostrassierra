@@ -13,3 +13,16 @@ clase2:
   room: t01
   subject: lengua
   hour: martes4
+
+clase3:
+  group: daw
+  teacher: elena
+  room: t01
+  subject: lengua
+  hour: jueves5
+clase4:
+  group: daw
+  teacher: elena
+  room: t01
+  subject: php
+  hour: jueves5

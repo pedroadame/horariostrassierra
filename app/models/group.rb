@@ -6,7 +6,7 @@ class Group < ActiveRecord::Base
   # Relación con Profesor
   belongs_to :teacher
   has_many :class_hours
-
+  has_many :teachers, -> { distinct }, through: :class_hours
   def search(params = {})
     self.class_hours.where(hour: Hour.search(day: params[:day],
                                              hour: params[:hour])).first
@@ -14,5 +14,9 @@ class Group < ActiveRecord::Base
 
   def actual_teacher
     self.search&.teacher || nil
+  end
+
+  def team
+
   end
 end

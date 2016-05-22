@@ -13,3 +13,10 @@ martes4:
   hour: 4
   start: "11:45"
   end: "12:45"
+
+jueves5:
+  code: 22222
+  day: 4
+  hour: 5
+  start: "12:45"
+  end: "13:45"
