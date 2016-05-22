@@ -21,7 +21,8 @@ class Hour < ActiveRecord::Base
       hour = parse_hour(params[:hour]) || Time.now.strftime('%H:%M')
       filter = self.arel_table[:day].eq(params[:day])
                    .and(self.arel_table[:start].lteq(hour)
-                            .and(self.arel_table[:end].gt(hour)))
+                            .and(self.arel_table[:end].gt(hour)
+                                     .or(self.arel_table[:end].eq('00:00'))))
       where(filter).first
     end
 
