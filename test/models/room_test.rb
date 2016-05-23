@@ -25,4 +25,12 @@ class RoomTest < ActiveSupport::TestCase
     assert @room.valid?
   end
 
+  test 'aulas vacias' do
+    create_actual_hour if Hour.now.nil?
+    Room.destroy_all
+    Room.create!(name: 'Aula vacía')
+    Room.create!(name: 'Aula vacía 2')
+    assert_not_nil Room.empties
+    assert_equal 2, Room.empties.count
+  end
 end
