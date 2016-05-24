@@ -13,6 +13,6 @@ class Group < ActiveRecord::Base
   end
 
   def actual_teacher
-    self.search&.teacher || nil
+    self.search&.teacher
   end
 end
