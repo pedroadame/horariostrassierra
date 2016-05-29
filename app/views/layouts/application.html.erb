@@ -2,15 +2,37 @@
 <html>
 <head>
   <title>Horarios Trassierra</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!--
 <% flash.each do |key, value| %>
-  <div class="alert alert-<%=key %>"><%=value%></div>
-    <% end %>
-<%= yield %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+-->
+<div class="container">
+  <aside></aside>
+  <main>
+    <div class="s1">
+    </div>
+    <div class="s2">
+      <%= yield %>
+    </div>
+  </main>
+</div>
 
+<!-- Container -->
+
+<!-- Sidenav -->
+<!-- !Sidenav -->
+
+<!-- Main -->
+<!-- Header -->
+<!-- Contenido principal -->
+
+
+<!-- !Container -->
 </body>
 </html>
