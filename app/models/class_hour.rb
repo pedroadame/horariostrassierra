@@ -10,4 +10,15 @@ class ClassHour < ActiveRecord::Base
   validates :room, presence: true
   validates :subject, presence: true
   validates :hour, presence: true
+
+  def groups
+    grupos = [self.group]
+    ClassHour.where(hour: self.hour, room: self.room, teacher: self.teacher,
+                    subject: self.subject)
+        .where.not(group: self.group)
+        .each do |hora|
+      grupos << hora.group
+    end
+    grupos
+  end
 end
