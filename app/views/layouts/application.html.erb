@@ -12,27 +12,95 @@
     <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
 -->
-<div class="container">
-  <aside></aside>
-  <main>
-    <div class="s1">
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer ">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout-icon"></div>
+    <div class="mdl-layout__header-row">
+      <span class="mdl-layout__title">Horarios Trassierra</span>
     </div>
-    <div class="s2">
-      <%= yield %>
+  </header>
+  <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+    <nav class="mdl-navigation">
+      <a href="#" class="mdl-navigation__link">Link 1</a>
+      <a href="#" class="mdl-navigation__link">Link 2</a>
+      <a href="#" class="mdl-navigation__link">Link 3</a>
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+    <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div class="mdl-tabs__tab-bar">
+        <a href="#manana" class="mdl-tabs__tab is-active">Turno de Mañana</a>
+        <a href="#tarde" class="mdl-tabs__tab">Turno de Tarde</a>
+      </div>
+      <div class="mdl-tabs__panel is-active" id="manana">
+        <table class="mdl-data-table mdl-js-data-table">
+          <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">ENCABEZADO</th>
+            <th class="mdl-data-table__cell--non-numeric">ENCABEZADO</th>
+            <th class="mdl-data-table__cell--non-numeric">ENCABEZADO</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+            <td class="mdl-data-table__cell--non-numeric">TEST</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mdl-tabs__panel" id="tarde">
+        <table class="mdl-data-table mdl-js-data-table">
+          <thead>
+          <tr>
+            <th class="mdl-data-table__cell--non-numeric">ENCABEZADO</th>
+            <th class="mdl-data-table__cell--non-numeric">ENCABEZADO</th>
+            <th class="mdl-data-table__cell--non-numeric">ENCABEZADO</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">tarde</td>
+          </tr>
+          <tr>
+            <td class="mdl-data-table__cell--non-numeric">Tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">Tarde</td>
+            <td class="mdl-data-table__cell--non-numeric">Tarde</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 </div>
-
-<!-- Container -->
-
-<!-- Sidenav -->
-<!-- !Sidenav -->
-
-<!-- Main -->
-<!-- Header -->
-<!-- Contenido principal -->
-
-
-<!-- !Container -->
 </body>
 </html>
