@@ -1,0 +1,8 @@
+
+<%= form_tag '/import', multipart: true do %>
+
+    <label for="file">Archivo:</label><%= file_field_tag 'file', accept:
+    'text/xml' %> <br>
+    <%= submit_tag 'Subir archivo', data: { confirm: 'Estas seguro?\nEsto
+    LIMPIARA TODA la base de datos'}%>
+<% end %>
