@@ -5,4 +5,6 @@ module ApplicationHelper
     return "#{title} | #{base}" unless title.empty?
     base
   end
+
+  # def gravatar_for
 end

@@ -45,6 +45,7 @@ class Teacher < ActiveRecord::Base
     matches = self.name.match regex
     a = matches.to_a
     a.shift
-    a.reverse.join " "
+    b = a.pop
+    a.unshift(b).join " "
   end
 end

@@ -1,5 +1,11 @@
 class XmlImportController < ApplicationController
 
+  before_action :is_admin!
+
+  def index
+
+  end
+
   def import
     file = params[:file]
     if file.content_type == 'text/xml'
@@ -94,6 +100,13 @@ class XmlImportController < ApplicationController
                                 room_id: aula, hour_id: tramo, group_id: grupo, subject_id: asignatura)
         end
       end
+    end
+  end
+
+  def is_admin!
+    unless current_user.admin?
+      flash[:notice] = "No tienes permiso"
+      redirect_to root_url
     end
   end
 

@@ -1,9 +1,8 @@
 @import 'material/color-definitions';
+
 $color-primary: $palette-blue-600;
 $color-primary-dark: $palette-blue-800;
 $color-accent: $palette-orange-A700;
-$color-background: #B0BEC5;
-$error-color: lighten(#f00, 1);
 @import 'material';
 
 #progress-bar {
@@ -13,6 +12,7 @@ $error-color: lighten(#f00, 1);
   z-index: 1000;
 
 }
+
 .alert {
   @extend .mdl-shadow--4dp;
   margin: 10px;
@@ -21,7 +21,7 @@ $error-color: lighten(#f00, 1);
 
 .alert-error {
   @extend .alert;
-  background-color: $error-color;
+  background-color: $palette-red-500;
 }
 
 .alert-success {
@@ -45,4 +45,14 @@ $error-color: lighten(#f00, 1);
 
 .remember-me {
   text-align: left;
+}
+
+.enlace-menu {
+  color: red;
+  /*&:hover {
+    background-color: black;
+  }
+  .is-active {
+    color: blue;
+  }*/
 }

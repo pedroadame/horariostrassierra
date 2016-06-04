@@ -26,3 +26,5 @@ en:
   minimo_password: "%{chars} characters minimum"
   bad_email: "Enter a valid email"
   bad_prod_email: "Enter an IES Trassierra email"
+  exit: "Log out"
+  admin_panel: "Admin panel"

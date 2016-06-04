@@ -14,7 +14,10 @@ es:
               blank: "no puede estar en blanco"
             password:
               blank: "no puede estar en blanco"
+  hello: "Hola Mundo"
   errores: "Se han encontrado los siguientes errores:"
   minimo_password: "%{chars} o más caracteres"
   bad_email: "Introduce un email correcto"
   bad_prod_email: "Introduce un email del IES Trassierra"
+  exit: "Cerrar sesión"
+  admin_panel: "Panel de administrador"

@@ -3,13 +3,26 @@
 class ApplicationController < ActionController::Base
   # Previene ataques CSRF
   protect_from_forgery with: :exception
-  before_action { authenticate_user! && has_teacher! }
+  before_action(:except => [:change_locale, :set_locale]) { authenticate_user! && has_teacher! }
   before_action :selected_teacher!, only: [:select_teacher, :assign_teacher]
+  before_action :set_locale
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def self.default_url_options(options = {})
+    { locale: I18n.locale }.merge options
+  end
 
   def index
   end
 
   def select_teacher
+    if current_user.admin?
+      flash[:notice] = "Solo los profesores pueden hacer eso"
+      redirect_to root_url
+    end
     @teachers = Teacher.wo_account
   end
 
@@ -23,7 +36,7 @@ class ApplicationController < ActionController::Base
 
   private
     def has_teacher!
-      if current_user&.teacher.nil? && action_name != "select_teacher" &&
+      if current_user&.teacher.nil? && !current_user.admin? && action_name != "select_teacher" &&
           action_name != "assign_teacher"
         redirect_to select_teacher_url
       end
@@ -31,5 +44,21 @@ class ApplicationController < ActionController::Base
 
     def selected_teacher!
       redirect_to root_url unless current_user.teacher.nil?
+    end
+
+    def parse_referer(ref)
+      return nil if ref.nil?
+      regex = /\A(https?):\/\/(.*)\/(.*)\/(.*)\z/
+      matches = ref.match regex
+      matches = matches.to_a
+      matches.shift
+      matches[2] = tld_toggle(matches[2])
+      m = matches[0]
+      matches.shift
+      "#{m}://#{matches.join("/")}"
+    end
+
+    def tld_toggle(tld)
+      tld == "es" ? "en" : "es"
     end
 end
