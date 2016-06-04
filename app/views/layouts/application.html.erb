@@ -8,14 +8,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!--<%= render 'layouts/flash' %>-->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+mdl-color--grey-100 <%=
+  "mdl-layout--fixed-drawer" if user_signed_in? && !current_user.teacher.nil? %>">
   <%= render 'layouts/header' %>
-  <%= render 'layouts/drawer' %>
+  <%= render 'layouts/drawer' if user_signed_in? && !current_user.teacher.nil? %>
   <main class="mdl-layout__content">
+    <%= render 'layouts/flash' %>
     <!-- Content -->
-    <!--<%= yield %>-->
+    <% if devise_controller? %>
+        <%= devise_error_messages! %>
+        <%= render 'layouts/devise' %>
+    <% else %>
+        <%= yield %>
+    <% end %>
   </main>
+  <!--<%= render 'layouts/footer' %>-->
 </div>
 </body>
 </html>

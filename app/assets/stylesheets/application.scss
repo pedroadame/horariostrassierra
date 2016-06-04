@@ -1,1 +1,48 @@
+@import 'material/color-definitions';
+$color-primary: $palette-blue-600;
+$color-primary-dark: $palette-blue-800;
+$color-accent: $palette-orange-A700;
+$color-background: #B0BEC5;
+$error-color: lighten(#f00, 1);
 @import 'material';
+
+#progress-bar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+}
+.alert {
+  @extend .mdl-shadow--4dp;
+  margin: 10px;
+  padding: 1em;
+}
+
+.alert-error {
+  @extend .alert;
+  background-color: $error-color;
+}
+
+.alert-success {
+
+}
+
+.formulario {
+  text-align: center;
+}
+
+.card-buttons {
+  a, input {
+    float: right;
+    margin-right: 0.5em;
+  }
+
+  .clear {
+    clear: both;
+  }
+}
+
+.remember-me {
+  text-align: left;
+}

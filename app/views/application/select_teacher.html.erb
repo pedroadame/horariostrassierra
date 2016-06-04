@@ -1,0 +1,5 @@
+<h1>Hay <%= @teachers.count %> profesores sin asociar.</h1>
+<h2>Por favor, dinos quién eres.</h2>
+<% @teachers.each do |t| %>
+ <p><%= link_to t.humanize, assign_teacher_url(id: t.id ),  method: :post %></p>
+<% end %>

@@ -1,7 +1,15 @@
 <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-  <nav class="mdl-navigation">
+  <nav class="mdl-navigation mdl-layout-spacer">
     <a href="#" class="mdl-navigation__link">Montón de cosas de aqui a abajo</a>
-    <!--<a href="#" class="mdl-navigation__link">Link 2</a>-->
-    <!--<a href="#" class="mdl-navigation__link">Link 3</a>-->
+    <a href="#" class="mdl-navigation__link">Montón de cosas de aqui a abajo</a>
+    <a href="#" class="mdl-navigation__link">Montón de cosas de aqui a abajo</a>
+    <a href="#" class="mdl-navigation__link">Montón de cosas de aqui a abajo</a>
+    <a href="#" class="mdl-navigation__link">Montón de cosas de aqui a abajo</a>
+    <div class="mdl-layout-spacer"></div>
+    <a href="#" class="mdl-navigation__link">Montón de cosas de aqui a abajo</a>
+    <%= link_to destroy_user_session_path, method: :delete, class:
+        "mdl-navigation__link" do %>
+        <span class="mdl-badge" data-badge="4">Inbox</span>
+    <% end %>
   </nav>
 </div>

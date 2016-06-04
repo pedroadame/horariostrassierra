@@ -1,0 +1,20 @@
+es:
+  activerecord:
+    attributes:
+      user:
+        password: "Contraseña"
+        email: "Email"
+        password_confirmation: "Confirmar contraseña"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "ya está en uso"
+              blank: "no puede estar en blanco"
+            password:
+              blank: "no puede estar en blanco"
+  errores: "Se han encontrado los siguientes errores:"
+  minimo_password: "%{chars} o más caracteres"
+  bad_email: "Introduce un email correcto"
+  bad_prod_email: "Introduce un email del IES Trassierra"

@@ -1,0 +1,34 @@
+<%= provide(:devise_title, t('iniciar_sesion')) %>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),
+    html: { class: 'formulario'} ) do |f| %>
+
+    <div class="mdl-card__supporting-text">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.text_field :email, autofocus: true, class: 'mdl-textfield__input',
+                         pattern: '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' %>
+        <%= f.label :email, class: 'mdl-textfield__label' %>
+        <span class="mdl-textfield__error"><%= t 'bad_email' %></span>
+      </div>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.password_field :password, autocomplete: "off",
+                             class: 'mdl-textfield__input' %>
+        <%= f.label :password, class: 'mdl-textfield__label' %>
+      </div>
+      <% if devise_mapping.rememberable? -%>
+          <div class="mdl-textfield remember-me">
+          <%= f.label :remember_me, class: 'mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect' do %>
+              <%= f.check_box :remember_me, class: 'mdl-checkbox__input' %>
+              <span class="mdl-checkbox__label"><%= t("recordarme") %></span>
+          <% end %>
+          </div>
+      <% end -%>
+    </div>
+    <div class="mdl-card__actions mdl-card--border card-buttons">
+      <%= f.submit t('submit'), class: 'mdl-button
+      mdl-js-button mdl-button--raised mdl-button--colored
+      mdl-js-ripple-effect' %>
+      <%= render 'devise/shared/links' %>
+      <div class="clear"></div>
+    </div>
+<% end %>

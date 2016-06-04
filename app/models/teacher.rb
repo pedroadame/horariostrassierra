@@ -8,7 +8,7 @@ class Teacher < ActiveRecord::Base
   # de forma simple.
   has_one :group
   has_many :class_hours
-
+  has_one :user
   class << self
     def in_guard
       ts = Teacher.all
@@ -21,6 +21,14 @@ class Teacher < ActiveRecord::Base
       end
       guardias
     end
+
+    def wo_account
+      teachers = []
+      Teacher.all.each do |t|
+        teachers << t if t.user.nil?
+      end
+      teachers
+    end
   end
 
   def search(params = {})
@@ -30,5 +38,13 @@ class Teacher < ActiveRecord::Base
 
   def has_group?
     !self.group.nil?
+  end
+
+  def humanize
+    regex = /(.*) (.*), (.*)/
+    matches = self.name.match regex
+    a = matches.to_a
+    a.shift
+    a.reverse.join " "
   end
 end

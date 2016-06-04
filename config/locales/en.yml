@@ -21,3 +21,8 @@
 
 en:
   hello: "Hello world"
+  forgot_password: "Forgot your password?"
+  errores: "The following errors were found:"
+  minimo_password: "%{chars} characters minimum"
+  bad_email: "Enter a valid email"
+  bad_prod_email: "Enter an IES Trassierra email"

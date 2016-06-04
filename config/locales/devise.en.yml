@@ -58,3 +58,9 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  registrarse: "Sign up"
+  iniciar_sesion: "Log in"
+  recordarme: "Remember me"
+  submit: "Submit"
+  reenviar_confirmacion: ""
+
