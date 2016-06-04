@@ -46,13 +46,20 @@ $color-accent: $palette-orange-A700;
 .remember-me {
   text-align: left;
 }
-
-.enlace-menu {
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link.enlace-menu {
   color: red;
-  /*&:hover {
+  &:hover {
     background-color: black;
   }
-  .is-active {
+  &.is-active {
     color: blue;
-  }*/
+  }
+}
+
+.mdl-mini-footer--link-list li a.idioma-actual {
+  color: darken(white, 15);
+}
+
+.mdl-mini-footer__left-section.has-drawer{
+  padding-left: 250px;
 }
