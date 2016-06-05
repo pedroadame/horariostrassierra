@@ -11,9 +11,9 @@
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
 mdl-color--grey-100 <%=
-  "mdl-layout--fixed-drawer" if user_signed_in? && (!current_user.teacher.nil? || current_user.admin?) %>">
+  "mdl-layout--fixed-drawer" if should_render_drawer %>">
   <%= render 'shared/header' %>
-  <%= render 'shared/drawer' if user_signed_in? && (!current_user.teacher.nil? || current_user.admin?) %>
+  <%= render 'shared/drawer' if should_render_drawer %>
   <main class="mdl-layout__content">
     <%= render 'shared/flash' %>
     <!-- Content -->

@@ -17,6 +17,7 @@ $color-accent: $palette-orange-A700;
   @extend .mdl-shadow--4dp;
   margin: 10px;
   padding: 1em;
+  text-align: center;
 }
 
 .alert-error {
@@ -62,4 +63,26 @@ $color-accent: $palette-orange-A700;
 
 .mdl-mini-footer__left-section.has-drawer{
   padding-left: 250px;
+}
+
+.gravatar {
+  border-radius: 100%;
+  border: 3px solid white;
+}
+
+.demo-avatar-dropdown {
+  margin-top: 2em;
+}
+
+.demo-drawer-header {
+  text-align: center;
+  padding-top: 3em;
+  padding-bottom: 1.5em;
+}
+
+.ellipsizable {
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

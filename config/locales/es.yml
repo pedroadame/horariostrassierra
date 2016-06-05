@@ -21,3 +21,6 @@ es:
   bad_prod_email: "Introduce un email del IES Trassierra"
   exit: "Cerrar sesión"
   admin_panel: "Panel de administrador"
+  admin: "Administrador"
+  links:
+    prof_guardia: "Profesores de guardia"

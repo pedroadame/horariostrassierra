@@ -1,9 +1,6 @@
 <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
   <header class="demo-drawer-header">
-    <!--<img src="images/user.jpg" class="gravatar">-->
-    <div class="demo-avatar-dropdown">
-      <span><%= current_user.email %></span>
-    </div>
+    <%= drawer_header %>
   </header>
   <nav class="mdl-navigation mdl-layout-spacer mdl-color--blue-grey-800">
     <a href="#" class="mdl-navigation__link enlace-menu">Montón de cosas de aqui a abajo</a>
@@ -14,7 +11,6 @@
     <div class="mdl-layout-spacer"></div>
     <% if current_user.admin? %>
         <%= link_to t("admin_panel"), new_database_path, class: 'mdl-navigation__link' %>
-        <!--<a href="#" class="mdl-navigation__link">Admin panel</a>-->
     <% end %>
     <%= link_to t("exit"), destroy_user_session_path, method: :delete, class:
         "mdl-navigation__link" %>
