@@ -31,3 +31,7 @@ en:
   admin: "Administrator"
   links:
     prof_guardia: "Teachers in guard"
+  profs_guardia:
+    zero: "There isn't any teacher in guard at this moment"
+    one: "There is one teacher in guard"
+    other: "There are %{count} teachers in guard"

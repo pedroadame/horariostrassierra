@@ -8,6 +8,7 @@ class Teacher < ActiveRecord::Base
   # de forma simple.
   has_one :group
   has_many :class_hours
+  has_many :groups, -> { distinct }, through: :class_hours
   has_one :user
   class << self
     def in_guard

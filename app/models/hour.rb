@@ -17,8 +17,17 @@ class Hour < ActiveRecord::Base
 
   class << self
     def search(params = {})
-      params[:day] ||= Time.now.wday
-      hour = parse_hour(params[:hour]) || Time.now.strftime('%H:%M')
+
+      if Rails.configuration.x.mock_time
+        params[:day] ||= Time.mocked_now.wday
+        hour = parse_hour(params[:hour]) || Time.mocked_now.strftime('%H:%M')
+      else
+        params[:day] ||= Time.now.wday
+        hour = parse_hour(params[:hour]) || Time.now.strftime('%H:%M')
+      end
+
+
+
       filter = self.arel_table[:day].eq(params[:day])
                    .and(self.arel_table[:start].lteq(hour)
                             .and(self.arel_table[:end].gt(hour)

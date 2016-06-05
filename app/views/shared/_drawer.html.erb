@@ -3,16 +3,21 @@
     <%= drawer_header %>
   </header>
   <nav class="mdl-navigation mdl-layout-spacer mdl-color--blue-grey-800">
-    <a href="#" class="mdl-navigation__link enlace-menu">Montón de cosas de aqui a abajo</a>
-    <a href="#" class="mdl-navigation__link enlace-menu">Montón de cosas de aqui a abajo</a>
-    <a href="#" class="mdl-navigation__link enlace-menu">Montón de cosas de aqui a abajo</a>
+    <% if current_user&.teacher.has_group? %>
+    <a href="#" class="mdl-navigation__link">Mi tutoría</a>
+    <% end %>
+    <%= link_to profs_guardia_path, class: 'mdl-navigation__link enlace-menu' do %>
+        <i class="material-icons">hourglass_empty</i><%= t('links.prof_guardia') %>
+    <% end %>
     <a href="#" class="mdl-navigation__link enlace-menu">Montón de cosas de aqui a abajo</a>
     <a href="#" class="mdl-navigation__link enlace-menu">Montón de cosas de aqui a abajo</a>
     <div class="mdl-layout-spacer"></div>
     <% if current_user.admin? %>
         <%= link_to t("admin_panel"), new_database_path, class: 'mdl-navigation__link' %>
     <% end %>
-    <%= link_to t("exit"), destroy_user_session_path, method: :delete, class:
-        "mdl-navigation__link" %>
+    <%= link_to  destroy_user_session_path, method: :delete, class:
+        "mdl-navigation__link" do %>
+        <i class="material-icons">exit_to_app</i> <%= t("exit")%>
+    <% end %>
   </nav>
 </div>

@@ -24,3 +24,7 @@ es:
   admin: "Administrador"
   links:
     prof_guardia: "Profesores de guardia"
+  profs_guardia:
+    zero: "No hay profesores de guardia en este momento"
+    one: "Hay un profesor de guardia"
+    other: "Hay %{count} profesores de guardia"
