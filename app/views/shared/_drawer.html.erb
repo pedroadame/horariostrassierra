@@ -7,7 +7,10 @@
       <i class="material-icons">today</i> <%= t('horario.horario') %>
     <% end %>
     <% if current_user&.teacher&.has_group? %>
-        <a href="#" class="mdl-navigation__link"> <%= t('links.mi_tutoria') %></a>
+        <%= link_to group_schedule_path(id: current_user&.teacher&.group.id), class: 'mdl-navigation__link enlace-menu' do %>
+            <i class="material-icons">supervisor_account</i> <%= t('links.mi_tutoria') %>
+        <% end %>
+
     <% end %>
     <%= link_to profs_guardia_path, class: 'mdl-navigation__link enlace-menu' do %>
         <i class="material-icons">schedule</i> <%= t('links.prof_guardia') %>

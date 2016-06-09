@@ -5,8 +5,12 @@ class TeachersController < ApplicationController
   end
 
   def current_user_schedule
-    @teacher = current_user&.teacher
-    render 'weekly_schedule'
+    if current_user.admin?
+      redirect_to teacher_list_path
+    else
+      @teacher = current_user&.teacher
+      render 'weekly_schedule'
+    end
   end
 
   def schedule

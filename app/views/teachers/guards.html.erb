@@ -9,7 +9,7 @@
           <tbody>
             <% @teachers.each do |t| %>
             <tr>
-              <td><%= t.name %></td>
+              <td style="cursor: pointer"><%= link_to t.name, teacher_schedule_path(id: t.id) %></td>
             </tr>
             <% end %>
           </tbody>

@@ -43,6 +43,7 @@ class XmlImportController < ApplicationController
 
   def replace_db(new_data)
     `rake db:schema:load`
+    User.create!(email: "admin@iestrassierra.com", password: "administrator", admin: true)
     process_data new_data
   end
 
