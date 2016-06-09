@@ -1,0 +1,3 @@
+<% @groups.each do |g| %>
+  <%= link_to g.name, group_schedule_path(id: g.id) %>
+<% end %>

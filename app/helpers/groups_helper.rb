@@ -1,5 +1,5 @@
-module TeachersHelper
-  def schedule_split_by_day (schedule)
+module GroupsHelper
+  def schedule_split_by_day(schedule)
     a = {}
     1.upto(5) { |i| a[i] = [] }
     schedule.each do |ch|

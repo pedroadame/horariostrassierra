@@ -1,0 +1,3 @@
+<% @teachers.each do |t| %>
+    <p><%= link_to t.humanize, teacher_schedule_path(id: t.id ) %></p>
+<% end %>

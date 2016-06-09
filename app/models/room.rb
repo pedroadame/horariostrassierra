@@ -1,7 +1,7 @@
 class Room < ActiveRecord::Base
   validates :name, presence: true
   has_many :class_hours, dependent: :destroy
-
+  default_scope -> { order name: :asc }
   class << self
     def empties
       rooms = Room.all
@@ -9,6 +9,7 @@ class Room < ActiveRecord::Base
       rooms.each do |room|
         vacias << room if room.clase_actual.nil?
       end
+      vacias
     end
   end
 

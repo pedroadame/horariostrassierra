@@ -2,7 +2,7 @@ class Teacher < ActiveRecord::Base
   # Validaciones de atributos
   validates :abbreviation, presence: true
   validates :name, presence: true
-
+  default_scope -> { order(name: :asc) }
   # Relación con su tutoría.
   # Nos permite acceder a la tutoría del profesor (de tenerla)
   # de forma simple.
@@ -48,5 +48,14 @@ class Teacher < ActiveRecord::Base
     a.shift
     b = a.pop
     a.unshift(b).join " "
+  end
+
+  def schedule
+    ids = ClassHour.find_by_sql(['SELECT max(class_hours.id) mid FROM class_hours inner join hours on class_hours.hour_id = hours.id inner join rooms on class_hours.room_id = rooms.id where class_hours.teacher_id = ? group by hours.id, rooms.id ORDER BY hours.day, hours.hour', self.id]).map { |x| x['mid'] }
+    horas_clase = []
+    ids.each do |id|
+      horas_clase << ClassHour.find(id)
+    end
+    horas_clase
   end
 end

@@ -10,7 +10,6 @@ $color-accent: $palette-orange-A700;
   top: 0;
   width: 100%;
   z-index: 1000;
-
 }
 
 .alert {
@@ -48,12 +47,10 @@ $color-accent: $palette-orange-A700;
   text-align: left;
 }
 .mdl-layout__drawer .mdl-navigation .mdl-navigation__link.enlace-menu {
-  color: red;
+  color: darken(white, 20%);
   &:hover {
-    background-color: black;
-  }
-  &.is-active {
-    color: blue;
+    background-color: lighten(rgb(55,71,79), 15%);
+    color: white;
   }
 }
 
@@ -89,4 +86,39 @@ $color-accent: $palette-orange-A700;
 
 .table-content {
   text-align: center;
+}
+
+.sch-test {
+  background-color: #eeeeee;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mdl-data-table {
+  td, th {
+    border-right: 1px solid rgba(0,0,0,0.12);
+    text-align: center;
+    &:last-child {
+      border-right: none;
+    }
+    &.now {
+      background-color: #B00100;
+      color: white;
+    }
+  }
+}
+$gris: lighten(#000000, 75%);
+.hora-libre {
+  color: $gris;
+}
+
+.hora-actual {
+  background-color: darken(#eeeeee, 20%);
+  color: white;
+}
+
+.small-footer {
+  padding: 16px;
 }

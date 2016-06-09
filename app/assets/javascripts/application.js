@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require material
-//= require turbolinks_tweak
+//= require schedule
 //= require loader
+//= require turbolinks_tweak
 //= require turbolinks

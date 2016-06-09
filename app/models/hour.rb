@@ -9,8 +9,8 @@ class Hour < ActiveRecord::Base
       greater_than_or_equal_to: 0, less_than_or_equal_to: 6 }
   validates :hour, numericality: {
       only_integer: true, greater_than: 0, less_than_or_equal_to: 14 }
-  validates :start, format: {with: HOUR_REGEX}, presence: true
-  validates :end, format: {with: HOUR_REGEX}, presence: true
+  validates :start, format: { with: HOUR_REGEX }, presence: true
+  validates :end, format: { with: HOUR_REGEX }, presence: true
   before_validation :parse_end_hour, :parse_start_hour
 
   has_many :class_hours
@@ -25,8 +25,6 @@ class Hour < ActiveRecord::Base
         params[:day] ||= Time.now.wday
         hour = parse_hour(params[:hour]) || Time.now.strftime('%H:%M')
       end
-
-
 
       filter = self.arel_table[:day].eq(params[:day])
                    .and(self.arel_table[:start].lteq(hour)
@@ -46,8 +44,21 @@ class Hour < ActiveRecord::Base
         hour
       end
     end
+
+    def tramos_posibles
+      horas = Hour.distinct.pluck(:start, :end)
+      tramos = []
+      horas.each do |k, v|
+        tramos << (k + " - " + v)
+      end
+      tramos
+    end
   end
 
+  def tramo_horario
+
+    self.start + " - " + self.end
+  end
 
   private
   def parse_start_hour

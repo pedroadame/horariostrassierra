@@ -7,7 +7,12 @@ Rails.application.routes.draw do
     get '/select_teacher' => 'application#select_teacher', as: 'select_teacher'
     post '/select_teacher/:id' => 'application#assign_teacher', as: 'assign_teacher'
     get '/guards' => 'teachers#guards', as: 'profs_guardia'
-    root to: 'application#index'
+    get '/teachers/:id' => 'teachers#schedule', as: 'teacher_schedule'
+    get '/teachers' => 'teachers#teachers', as: 'teacher_list'
+    get '/empty_rooms' => 'rooms#empties', as: 'aulas_vacias'
+    get '/groups/:id' => 'groups#schedule', as: 'group_schedule'
+    get '/groups' => 'groups#list', as: 'groups'
+    root to: 'teachers#current_user_schedule'
   end
 
   get '/:locale' => 'application#index'
