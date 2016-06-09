@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get '/empty_rooms' => 'rooms#empties', as: 'aulas_vacias'
     get '/groups/:id' => 'groups#schedule', as: 'group_schedule'
     get '/groups' => 'groups#list', as: 'groups'
+    get '/profile' => 'users#profile', as: 'user_profile'
+    get '/rooms/:id' => 'rooms#schedule', as: 'room_schedule'
     root to: 'teachers#current_user_schedule'
   end
 

@@ -11,7 +11,7 @@
           <tbody>
           <% @rooms.each do |r| %>
               <tr>
-                <td><%= r.name %></td>
+                <td style="cursor: pointer"><%= link_to r.name.upcase, room_schedule_path(id: r.id) %></td>
               </tr>
           <% end %>
           </tbody>
