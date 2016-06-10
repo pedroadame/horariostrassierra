@@ -6,4 +6,8 @@ class RoomsController < ApplicationController
   def schedule
     @room = Room.find params[:id]
   end
+
+  def list
+    @rooms = Room.all
+  end
 end
