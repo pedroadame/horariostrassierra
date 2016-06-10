@@ -50,5 +50,5 @@ production:
   pool: 5
   socket: /var/run/mysqld/mysqld.sock
   database: horariostrassierra
-  username: horariostrassierra
+  username: htrassierra
   password: <%= ENV['HORARIOSTRASSIERRA_DATABASE_PASSWORD'] %>
