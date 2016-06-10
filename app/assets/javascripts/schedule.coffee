@@ -1,8 +1,8 @@
 highlightSchedule = ->
   actual = $(".hora-actual")
-  actual.parent().addClass "sch-test"
+  actual.parent().addClass "resaltado"
   ind = actual.index()
-  $("td:nth-child("+(ind+1)+")").addClass "sch-test"
-  $("th:nth-child("+(ind+1)+")").addClass "sch-test"
+  $("td:nth-child("+(ind+1)+")").addClass "resaltado"
+  $("th:nth-child("+(ind+1)+")").addClass "resaltado"
 
 window.highlightSchedule = highlightSchedule

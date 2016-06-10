@@ -42,7 +42,7 @@ class Teacher < ActiveRecord::Base
   end
 
   def humanize
-    regex = /(.*) (.*), (.*)/
+    regex = /(.*) (.*),\s?(.*)/
     matches = self.name.match regex
     a = matches.to_a
     a.shift

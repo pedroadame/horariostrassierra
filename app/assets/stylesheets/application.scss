@@ -2,7 +2,7 @@
 
 $color-primary: $palette-blue-600;
 $color-primary-dark: $palette-blue-800;
-$color-accent: $palette-orange-A700;
+$color-accent: $palette-blue-A700;
 @import 'material';
 
 #progress-bar {
@@ -88,9 +88,6 @@ $color-accent: $palette-orange-A700;
   text-align: center;
 }
 
-.sch-test {
-  background-color: #eeeeee;
-}
 
 .full-width {
   width: 100%;
@@ -114,11 +111,26 @@ $gris: lighten(#000000, 75%);
   color: $gris;
 }
 
+.resaltado {
+  background-color: lighten(rgb(130,177,255), 20%);
+}
 .hora-actual {
-  background-color: darken(#eeeeee, 20%);
-  color: white;
+  background-color: lighten(#2979FF, 20%);
+  color: black;
 }
 
 .small-footer {
-  padding: 16px;
+  padding: 24px;
+}
+
+span.tooltip {
+  display: block;
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: inherit;
+  }
+}
+
+.schedule-tooltip {
+  max-width: none;
 }

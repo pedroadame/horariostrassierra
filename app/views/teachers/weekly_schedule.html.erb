@@ -1,4 +1,5 @@
 <% sch = schedule_split_by_day(@teacher.schedule) %>
+<% provide(:title, @teacher.humanize) %>
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--1-offset mdl-cell--10-col mdl-cell--middle mdl-card
   mdl-shadow--6dp">
@@ -10,27 +11,29 @@
       <thead>
       <tr>
         <% # noinspection RailsI18nInspection
-           t('horario.cabeceras').each do |val| %>
-            <th><%= val %></th>
+           t('horario.cabeceras').each do |cabecera| %>
+            <th><%= cabecera %></th>
         <% end %>
       </tr>
       </thead>
       <tbody>
-      <% Hour.tramos_posibles.each do |tr| %>
+      <% Hour.tramos_posibles.each_with_index do |tramo, index| %>
           <tr>
-            <td><%= tr %></td>
-            <% 1.upto(5) do |j| %>
-                <% if sch[j].first&.in? tr
-                    a = sch[j].shift
-                    texto = a.subject.abbreviation.upcase + " - " + a.room.abbreviation
-                    id = Random.rand(Integer::MAX).to_s
-                    %>
+            <td><%= tramo %></td>
+            <% 1.upto(5) do |dia_semana| %>
+                <% if sch[dia_semana].first&.in? tramo
+                     a = sch[dia_semana].shift
+                     texto = a.draw
+                     id = Random.rand(Integer::MAX).to_s
+                %>
                     <td id="<%= id %>" <%= 'class="hora-actual"'.html_safe if a.now? %>><%= texto %></td>
-                    <div class="mdl-tooltip" for="<%= id %>">
-                      <% a.groups.each do |a| %>
-                          <%= a %> <br>
-                      <% end %>
-                    </div>
+                    <% unless a.guard? %>
+                        <div class="mdl-tooltip mdl-tooltip--large <%= "mdl-tooltip--top" if index > (Hour.tramos_posibles.count / 2) %> schedule-tooltip" for="<%= id %>">
+                          <% a.groups.each do |grupo| %>
+                              <span class="tooltip"><%= grupo %> </span>
+                          <% end %>
+                        </div>
+                    <% end %>
                 <% else %>
                     <td class="hora-libre"><%= t("sin_clase") %></td>
                 <% end %>

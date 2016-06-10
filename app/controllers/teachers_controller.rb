@@ -15,7 +15,6 @@ class TeachersController < ApplicationController
 
   def schedule
     @teacher = Teacher.find params[:id]
-
     render 'weekly_schedule'
   end
 

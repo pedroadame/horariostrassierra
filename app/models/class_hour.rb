@@ -30,4 +30,12 @@ class ClassHour < ActiveRecord::Base
   def now?
     self.hour == Hour.now
   end
+
+  def guard?
+    (self.subject.abbreviation == "GUARD")
+  end
+  def draw
+    return "GUARDIA" if self.guard?
+    self.subject.abbreviation.upcase + " - " + self.room.abbreviation.upcase
+  end
 end

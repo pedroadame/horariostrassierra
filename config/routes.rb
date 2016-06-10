@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /es|en/ do
     devise_for :users
-    get '/import' => 'xml_import#index', as: 'new_database'
+    get '/admin_panel' => 'xml_import#index', as: 'admin_panel'
     post '/import' => 'xml_import#import', as: 'xml_upload'
     get '/process_import' => 'xml_import#index', as: 'xml_process'
     get '/select_teacher' => 'application#select_teacher', as: 'select_teacher'

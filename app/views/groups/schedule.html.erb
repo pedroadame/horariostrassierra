@@ -17,7 +17,7 @@
       </thead>
       <tbody>
       <!-- Recorremos todas las filas imprimiendo la hora en la primera celda -->
-      <% Hour.tramos_posibles.each do |tr| %>
+      <% Hour.tramos_posibles.each.with_index do |tr, tr_index| %>
           <tr>
             <td><%= tr %></td>
             <!-- Recorremos los 5 días de la semana para cada hora posible -->
@@ -31,13 +31,19 @@
                   h << hora_clase
                 end
               end
-              id = Random.rand(Integer::MAX).to_s
               # Si hay horas en h, el grupo tiene clase. Dibujamos la celda
               # con las clases. Si no, dibujamos una hora libre.
               if h.any? %>
-                    <td id="<%= id %>" <%= 'class="hora-actual"'.html_safe if h.first.now? %>>
-                      <% h.each do |hora| %>
-                          <%= hora.subject.abbreviation %> @
+                    <td <%= 'class="hora-actual"'.html_safe if h.first.now? %>>
+                      <% h.each.with_index do |hora, index|
+                        id = Random.rand(Integer::MAX).to_s
+                      %>
+                          <span id="<%= id %>" ><%= hora.subject.abbreviation %> </span>
+                          <%= "<strong>|</strong>".html_safe if h.count > 1 && index < (h.count - 1)  %>
+                          <div class="mdl-tooltip mdl-tooltip--large schedule-tooltip" for="<%= id %>">
+                            <%= t("profesor")%>: <%= hora.teacher.humanize %> <br>
+                            <%= t("aula") %>: <%= hora.room.abbreviation %>
+                          </div>
                       <% end %>
                     </td>
                 <% else %>

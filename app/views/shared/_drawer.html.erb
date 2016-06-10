@@ -23,7 +23,7 @@
       <!--a abajo</a>-->
     <div class="mdl-layout-spacer"></div>
     <% if current_user.admin? %>
-        <%= link_to t("admin_panel"), new_database_path, class: 'mdl-navigation__link enlace-menu' %>
+        <%= link_to t("admin_panel"), admin_panel_path, class: 'mdl-navigation__link enlace-menu' %>
     <% end %>
     <%= link_to destroy_user_session_path, method: :delete, class:
         "mdl-navigation__link enlace-menu" do %>

@@ -35,9 +35,16 @@
               # Si hay horas en h, el grupo tiene clase. Dibujamos la celda
               # con las clases. Si no, dibujamos una hora libre.
               if h.any? %>
-                    <td id="<%= id %>" <%= 'class="hora-actual"'.html_safe if h.first.now? %>>
-                      <% h.each do |hora| %>
-                          <%= hora.group.abbreviation %> @
+                    <td <%= 'class="hora-actual"'.html_safe if h.first.now? %>>
+                      <% h.each.with_index do |hora, index|
+                        id = Random.rand(Integer::MAX).to_s
+                      %>
+                          <span id="<%= id %>" ><%= hora.group.abbreviation %> </span>
+                          <%= "<strong>|</strong>".html_safe if h.count > 1 && index < (h.count - 1)  %>
+                          <div class="mdl-tooltip mdl-tooltip--large schedule-tooltip " for="<%= id %>">
+                            <%= t("profesor")%>: <%= hora.teacher.humanize %> <br>
+                            <%= t("asignatura") %>: <%= hora.subject.abbreviation %>
+                          </div>
                       <% end %>
                     </td>
                 <% else %>

@@ -18,7 +18,6 @@ mdl-color--grey-100 <%=
     <%= render 'shared/flash' %>
     <!-- Content -->
     <% if devise_controller? %>
-        <%= devise_error_messages! %>
         <%= render 'shared/devise' %>
     <% else %>
         <%= yield %>
