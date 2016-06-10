@@ -155,7 +155,7 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
 
   # Sólo aceptar emails del dominio @iestrassierra.com en entorno producción.
-  # config.email_regexp = /\A[^@\s]+@iestrassierra\.com\z/ if Rails.env.production?
+  config.email_regexp = /\A[^@\s]+@iestrassierra\.com\z/ if Rails.env.production?
 
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
