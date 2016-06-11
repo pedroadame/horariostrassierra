@@ -20,6 +20,28 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+      attributes:
+        user:
+          password: "Password"
+          email: "Email"
+          password_confirmation: "Password confirmation"
+          current_password: "Current password"
+      errors:
+        models:
+          user:
+            attributes:
+              current_password:
+                blank: "can't be blank"
+                invalid: "is invalid"
+              email:
+                taken: "is already taken"
+                blank: "can't be blank"
+              password:
+                blank: "can't be blank"
+                too_short: "has less than 8 characters"
+              password_confirmation:
+                confirmation: "doesn't match password"
   hello: "Hello world"
   forgot_password: "Forgot your password?"
   errores: "The following errors were found:"

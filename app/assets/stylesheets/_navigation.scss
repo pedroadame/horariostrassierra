@@ -1,0 +1,22 @@
+.mdl-layout__drawer .mdl-navigation .mdl-navigation__link.enlace-menu {
+  color: darken(white, 20%);
+  &:hover {
+    background-color: lighten(rgb(55,71,79), 15%);
+    color: white;
+  }
+}
+
+.gravatar {
+  border-radius: 100%;
+  border: 3px solid white;
+}
+
+.demo-avatar-dropdown {
+  margin-top: 2em;
+}
+
+.demo-drawer-header {
+  text-align: center;
+  padding-top: 3em;
+  padding-bottom: 1.5em;
+}

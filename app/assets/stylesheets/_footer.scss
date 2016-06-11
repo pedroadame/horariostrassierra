@@ -1,0 +1,53 @@
+.ellipsizable {
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.table-content {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mdl-data-table {
+  td, th {
+    border-right: 1px solid rgba(0,0,0,0.12);
+    text-align: center;
+    &:last-child {
+      border-right: none;
+    }
+    &.now {
+      background-color: #B00100;
+      color: white;
+    }
+  }
+}
+
+$gris: lighten(#000000, 75%);
+.hora-libre {
+  color: $gris;
+}
+
+.resaltado {
+  background-color: lighten(rgb(130,177,255), 20%);
+}
+.hora-actual {
+  background-color: lighten(#2979FF, 20%);
+  color: black;
+}
+
+span.tooltip {
+  display: block;
+  margin-bottom: 10px;
+  &:last-child {
+    margin-bottom: inherit;
+  }
+}
+
+.schedule-tooltip {
+  max-width: none;
+}
