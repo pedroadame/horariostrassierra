@@ -42,12 +42,12 @@ class XmlImportController < ApplicationController
 
   def replace_db(new_data)
     ClassHour.destroy_all
+    User.destroy_all
     Group.destroy_all
     Hour.destroy_all
     Teacher.destroy_all
     Subject.destroy_all
     Room.destroy_all
-    User.destroy_all
     User.create!(email: "admin@iestrassierra.com", password: "administrator", admin: true)
     process_data new_data
   end
