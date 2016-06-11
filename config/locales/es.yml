@@ -5,10 +5,14 @@ es:
         password: "Contraseña"
         email: "Email"
         password_confirmation: "Confirmar contraseña"
+        current_password: "Contraseña actual"
     errors:
       models:
         user:
           attributes:
+            current_password:
+              blank: "no puede estar en blanco"
+              invalid: "no es valida"
             email:
               taken: "ya está en uso"
               blank: "no puede estar en blanco"
@@ -57,3 +61,9 @@ es:
       one: "Hay un profesor sin cuenta"
       other: "Hay %{count} profesores sin cuenta"
   dinos_quien_eres: "Por favor dinos quien eres"
+  mi_perfil: "Mi perfil"
+  editar_perfil: "Editar perfil"
+  importar_xml: "Importar base de datos XML"
+  advertencia_importar: "Por favor, ten en cuenta que hacer esto destruirá toda la base de datos. Los profesores deberán volverse a registrar y el administrador volverá a tener la contraseña 'administrator'."
+  confirmacion: "¿Estás seguro?"
+  file: "Archivo"

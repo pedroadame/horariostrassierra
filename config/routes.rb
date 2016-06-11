@@ -12,10 +12,11 @@ Rails.application.routes.draw do
     get '/teachers/:id/groups' => 'teachers#groups', as: 'groups_of_teacher'
     get '/empty_rooms' => 'rooms#empties', as: 'aulas_vacias'
     get '/groups/:id' => 'groups#schedule', as: 'group_schedule'
-    get '/groups' => 'groups#list', as: 'groups'
+    get '/groups' => 'groups#list', as: 'groups_list'
     get '/profile' => 'users#profile', as: 'user_profile'
     get '/rooms/:id' => 'rooms#schedule', as: 'room_schedule'
-    get '/rooms' => 'rooms#list', as: 'rooms'
+    get '/rooms' => 'rooms#list', as: 'rooms_list'
+    get '/xsd', to: redirect('/database.xsd'), as: 'xsd'
     root to: 'teachers#current_user_schedule'
   end
 

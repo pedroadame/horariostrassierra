@@ -16,4 +16,5 @@
 //= require schedule
 //= require loader
 //= require turbolinks_tweak
+//= require xml_import
 //= require turbolinks

@@ -134,3 +134,8 @@ span.tooltip {
 .schedule-tooltip {
   max-width: none;
 }
+
+.mdl-button--raised.danger-button {
+  @extend .mdl-button--accent;
+  background-color: rgb(244, 67, 54);
+}

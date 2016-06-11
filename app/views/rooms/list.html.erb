@@ -7,7 +7,7 @@
     <table class="mdl-data-table mdl-js-data-table full-width links">
       <tbody>
       <% @rooms.each do |r| %>
-          <% next if r.abbreviation.blank? %>
+          <% next if r.abbreviation.blank? || r.name.mb_chars.upcase == "DESDOBLE" %>
           <tr>
             <td><%= link_to r.name.mb_chars.upcase, room_schedule_path(id: r.id) %></td>
           </tr>

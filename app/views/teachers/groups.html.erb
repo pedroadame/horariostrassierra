@@ -8,14 +8,12 @@
     <table class="mdl-data-table mdl-js-data-table full-width links">
       <tbody>
       <% @groups.each do |r| %>
-          <% next if r.abbreviation == "GUARD" %>
+          <% next if r.abbreviation == "GUARD" || r.name == "GUARDIA NOCTURNO"%>
           <tr>
             <td><%= link_to r.name.mb_chars.upcase, group_schedule_path(id: r.id) %></td>
           </tr>
       <% end %>
       </tbody>
     </table>
-
-
   </div>
 </div>

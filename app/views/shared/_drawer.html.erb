@@ -3,19 +3,20 @@
     <%= drawer_header %>
   </header>
   <nav class="mdl-navigation mdl-layout-spacer mdl-color--blue-grey-800">
-    <%= link_to root_path, class: 'mdl-navigation__link enlace-menu' do %>
-      <i class="material-icons">today</i> <%= t('horario.horario') %>
-    <% end %>
-    <% if current_user&.teacher&.has_group? %>
-        <%= link_to group_schedule_path(id: current_user&.teacher&.group.id), class: 'mdl-navigation__link enlace-menu' do %>
-            <i class="material-icons">supervisor_account</i> <%= t('links.mi_tutoria') %>
+    <% unless current_user.admin? %>
+        <%= link_to root_path, class: 'mdl-navigation__link enlace-menu' do %>
+            <i class="material-icons">today</i> <%= t('horario.horario') %>
         <% end %>
+        <% if current_user&.teacher&.has_group? %>
+            <%= link_to group_schedule_path(id: current_user&.teacher&.group.id), class: 'mdl-navigation__link enlace-menu' do %>
+                <i class="material-icons">supervisor_account</i> <%= t('links.mi_tutoria') %>
+            <% end %>
 
+        <% end %>
+        <%= link_to groups_of_teacher_path(id: current_user&.teacher&.id), class: 'mdl-navigation__link enlace-menu' do %>
+            <i class="material-icons">group</i> <%= t('links.mis_grupos') %>
+        <% end %>
     <% end %>
-    <%= link_to groups_of_teacher_path(id: current_user&.teacher&.id), class: 'mdl-navigation__link enlace-menu' do %>
-        <i class="material-icons">assignment_ind</i> <%= t('links.mis_grupos') %>
-    <% end %>
-
     <%= link_to profs_guardia_path, class: 'mdl-navigation__link enlace-menu' do %>
         <i class="material-icons">schedule</i> <%= t('links.prof_guardia') %>
     <% end %>
@@ -23,14 +24,21 @@
         <i class="material-icons">crop_freee</i> <%= t('links.aulas_vacias') %>
     <% end %>
     <hr>
-    <a href="#" class="mdl-navigation__link enlace-menu"><i class="material-icons">assignment_ind</i> Profesores</a>
-    <a href="#" class="mdl-navigation__link enlace-menu"><i class="material-icons">assignment</i> Grupos</a>
-    <a href="#" class="mdl-navigation__link enlace-menu"><i class="material-icons">dashboard</i> Aulas</a>
+    <%= link_to teacher_list_path, class: 'mdl-navigation__link enlace-menu' do %>
+        <i class="material-icons">assignment_ind</i> <%= t('profesores') %>
+    <% end %>
+    <%= link_to groups_list_path, class: 'mdl-navigation__link enlace-menu' do %>
+        <i class="material-icons">assignment</i> <%= t('grupos') %>
+    <% end %>
+    <%= link_to rooms_list_path, class: 'mdl-navigation__link enlace-menu' do %>
+        <i class="material-icons">apps</i> <%= t('aulas') %>
+    <% end %>
 
-    <!--<a href="#" class="mdl-navigation__link enlace-menu">Montón de cosas de aqui-->
-      <!--a abajo</a>-->
     <div class="mdl-layout-spacer"></div>
-    <a href="#" class="mdl-navigation__link enlace-menu"><i class="material-icons">face</i> Mi perfil</a>
+
+    <%= link_to user_profile_path, class: 'mdl-navigation__link enlace-menu' do %>
+        <i class="material-icons">face</i> <%= t('mi_perfil') %>
+    <% end %>
     <% if current_user.admin? %>
         <%= link_to t("admin_panel"), admin_panel_path, class: 'mdl-navigation__link enlace-menu' %>
     <% end %>

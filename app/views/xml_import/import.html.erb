@@ -1,5 +1,7 @@
 <h1>Subida completa.</h1>
+
 <% if @errors.any? %>
     <h3>Error!</h3>
-    <p>Parece ser que el archivo XML no cumple con el XSD que tenemos. :(</p>
+    <p>Parece ser que el archivo XML no cumple con el XSD que tenemos.</p>
+    <p>Asegurate de validarlo contra <%= link_to "este", xsd_url %> XSD</p>
 <% end %>
