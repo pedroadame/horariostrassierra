@@ -9,6 +9,10 @@ class XmlImportController < ApplicationController
     file = params[:file]
     if file.content_type == 'text/xml'
       @errors = import_new_database(file)
+      unless @errors.any?
+        flash[:success] = t("xml_importado")
+        redirect_to new_user_session_path unless @errors.any?
+      end
     else
       flash[:warning] = 'Solo se admiten archivos XML'
       redirect_to root_url
@@ -43,7 +47,7 @@ class XmlImportController < ApplicationController
     Teacher.destroy_all
     Subject.destroy_all
     Room.destroy_all
-    User.create!(email: "pedro.a.1smr@gmail.com", password: "administrator", admin: true)
+    User.create!(email: "admin@iestrassierra.com", password: "administrator", admin: true)
     process_data new_data
   end
 

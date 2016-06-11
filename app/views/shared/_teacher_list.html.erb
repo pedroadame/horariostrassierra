@@ -1,9 +1,15 @@
-<table class="mdl-data-table mdl-js-data-table full-width links">
-  <tbody>
-  <% teachers.each do |r| %>
-      <tr>
-        <td><%= link_to r.name.mb_chars.upcase, teacher_schedule_path(id: r.id) %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<% if teachers.any? %>
+    <table class="mdl-data-table mdl-js-data-table full-width links">
+      <tbody>
+      <% teachers.each do |t| %>
+          <tr>
+            <td style="cursor: pointer"><%= link_to t.name.mb_chars.upcase, teacher_schedule_path(id: t.id) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <div class="mdl-card__supporting-text">
+      <h2><%= t('no_hay_profesores') %></h2>
+    </div>
+<% end %>

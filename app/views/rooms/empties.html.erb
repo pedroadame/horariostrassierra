@@ -5,7 +5,9 @@
       <h2 class="mdl-card__title-text"><%= t('links.aulas_vacias') %></h2>
     </div>
     <% if @rooms.count == Room.all.count %>
-        <h1>Todas las aulas estan libres</h1>
+        <div class="mdl-card__supporting-text">
+          <h1>Todas las aulas estan libres</h1>
+        </div>
     <% elsif @rooms.any? %>
         <table class="mdl-data-table mdl-js-data-table full-width links">
           <tbody>

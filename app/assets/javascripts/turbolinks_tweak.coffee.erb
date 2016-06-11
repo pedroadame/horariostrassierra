@@ -6,3 +6,6 @@ document.addEventListener 'page:change', ->
       $("#upload").prop "disabled", false
     else
       $("#upload").prop "disabled", true
+  $("#import-xml-form")[0].addEventListener "submit", ->
+    $("#import-xml-title")[0].innerHTML = "<%= I18n.t("procesando") %>"
+    $("#progress-bar").show()

@@ -1,7 +1,12 @@
-<h1>Subida completa.</h1>
-
-<% if @errors.any? %>
-    <h3>Error!</h3>
-    <p>Parece ser que el archivo XML no cumple con el XSD que tenemos.</p>
-    <p>Asegurate de validarlo contra <%= link_to "este", xsd_url %> XSD</p>
-<% end %>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-offset mdl-cell--4-col mdl-cell--middle mdl-card
+  mdl-shadow--6dp">
+    <div class="mdl-card__title mdl-color-text--white error-card">
+      <h2 class="mdl-card__title-text"><%= t('import_error') %></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <p><%= t("import_error_no_valid") %></p>
+      <p><%= link_to "XSD Schema", xsd_url %></p>
+    </div>
+  </div>
+</div>
