@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/guards' => 'teachers#guards', as: 'profs_guardia'
     get '/teachers/:id' => 'teachers#schedule', as: 'teacher_schedule'
     get '/teachers' => 'teachers#teachers', as: 'teacher_list'
+    get '/teachers/:id/groups' => 'teachers#groups', as: 'groups_of_teacher'
     get '/empty_rooms' => 'rooms#empties', as: 'aulas_vacias'
     get '/groups/:id' => 'groups#schedule', as: 'group_schedule'
     get '/groups' => 'groups#list', as: 'groups'

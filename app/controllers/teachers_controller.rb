@@ -21,4 +21,8 @@ class TeachersController < ApplicationController
   def teachers
     @teachers = Teacher.all
   end
+
+  def groups
+    @groups = Teacher.find(params[:id]).groups
+  end
 end

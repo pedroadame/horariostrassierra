@@ -29,6 +29,7 @@ es:
     prof_guardia: "Profesores de guardia"
     mi_tutoria: "Mi tutoría"
     aulas_vacias: "Aulas vacías"
+    mis_grupos: "Mis grupos"
   profs_guardia:
     zero: "No hay profesores de guardia en este momento"
     one: "Hay un profesor de guardia"
@@ -51,3 +52,8 @@ es:
   profesores: "Profesores"
   grupos: "Grupos"
   aulas: "Aulas"
+  profesores_no_asignados:
+      zero: "Todos los profesores ya tienen cuenta"
+      one: "Hay un profesor sin cuenta"
+      other: "Hay %{count} profesores sin cuenta"
+  dinos_quien_eres: "Por favor dinos quien eres"

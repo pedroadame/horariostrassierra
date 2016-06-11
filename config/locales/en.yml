@@ -33,6 +33,7 @@ en:
     prof_guardia: "Teachers in guard"
     mi_tutoria: "My tutorial"
     aulas_vacias: "Empty rooms"
+    mis_grupos: "My groups"
   profs_guardia:
     zero: "There isn't any teacher in guard at this moment"
     one: "There is one teacher in guard"
@@ -55,3 +56,8 @@ en:
   profesores: "Teachers"
   grupos: "Groups"
   aulas: "Rooms"
+  profesores_no_asignados:
+    zero: "All teachers were already assigned"
+    one: "There is one teacher without account"
+    other: "There are %{count} teachers without account"
+  dinos_quien_eres: "Please tell us who yo are"
