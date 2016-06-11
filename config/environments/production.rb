@@ -32,7 +32,7 @@ Rails.application.configure do
   config.assets.compile = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
-  # yet still be able to expire them through the digest params.
+  # yet still be able to expire them through the digest params.a<
   config.assets.digest = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
@@ -77,6 +77,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.x.mock_time = false
-
-
+  host = 'horariostrassierra.me'
+  config.action_mailer.default_url_options = {host: host}
+  config.action_mailer.delivery_method :smtp
+  ActionMailer::Base.smtp_settings = {:address => 'mail.privateemail.com',
+                                      :port => '465',
+                                      :authentication => :plain,
+                                      :user_name => ENV['HT_EMAIL_USER'],
+                                      :password => ENV['HT_EMAIL_PASSWD'],
+                                      :domain => 'horariostrassierra.me',
+                                      :ssl => true }
 end

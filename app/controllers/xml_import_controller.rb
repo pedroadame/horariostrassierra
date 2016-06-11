@@ -27,14 +27,9 @@ class XmlImportController < ApplicationController
       errors = schema.validate(xml)
       valido = schema.valid? xml
       if valido && errors.empty?
-        logger.debug '---------------- Todo correcto'
         replace_db xml
         []
       else
-        logger.debug '---------------- Hay errores'
-        errors.each do |e|
-          logger.debug "Error: #{e.message}"
-        end
         errors
       end
     end
@@ -48,7 +43,7 @@ class XmlImportController < ApplicationController
     Teacher.destroy_all
     Subject.destroy_all
     Room.destroy_all
-    User.create!(email: "admin@iestrassierra.com", password: "administrator", admin: true)
+    User.create!(email: "pedro.a.1smr@gmail.com", password: "administrator", admin: true)
     process_data new_data
   end
 
