@@ -19,6 +19,10 @@ class XmlImportController < ApplicationController
     end
   end
 
+  def redir_get
+    redirect_to admin_panel_url
+  end
+
   private
   # TODO refactorizar esta mierda de codigo
   def import_new_database(file_data)

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     devise_for :users
     get '/admin_panel' => 'xml_import#index', as: 'admin_panel'
     post '/import' => 'xml_import#import', as: 'xml_upload'
+    get '/import' => 'xml_import#redir_get', as: 'xml_redirect_get_import'
     get '/process_import' => 'xml_import#index', as: 'xml_process'
     get '/select_teacher' => 'application#select_teacher', as: 'select_teacher'
     post '/select_teacher/:id' => 'application#assign_teacher', as: 'assign_teacher'
