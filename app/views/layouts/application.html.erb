@@ -5,6 +5,10 @@
   <%= stylesheet_link_tag 'application',
                           media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_tag do %>
+      window.I18n = <%= I18n.backend.send(:translations).to_json.html_safe %>
+      window.I18n.locale = "<%= I18n.locale %>"
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>

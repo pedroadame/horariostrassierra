@@ -1,3 +1,6 @@
+<%= javascript_tag do %>
+  window.importTitle = "<%= t("procesando") %>"
+<% end %>
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--4-offset mdl-cell--4-col mdl-cell--middle mdl-card
   mdl-shadow--6dp">
@@ -6,10 +9,12 @@
     </div>
     <%= form_tag "/#{I18n.locale}/import", multipart: true, id: 'import-xml-form' do %>
         <div class="mdl-card__supporting-text">
-          <label for="file"><%= t("file") %>: </label><%= file_field_tag 'file', id: 'file-input', accept:
+          <label for="file"><%= t("file") %>
+            : </label><%= file_field_tag 'file', id: 'file-input', accept:
             'text/xml' %>
           <hr>
-          <p class="xml-warning"><strong><%= t('advertencia_importar')%></strong></p>
+          <p class="xml-warning">
+            <strong><%= t('advertencia_importar') %></strong></p>
         </div>
         <div class="mdl-card__actions mdl-card--border card-buttons">
           <%= submit_tag t("submit"), class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect danger-button', id: 'upload', disabled: true, data: {confirm: t("confirmacion")} %>
