@@ -1,9 +1,10 @@
 # Clase ApplicationController.
 # Provee de funcionalidad adicional a todos los controladores.
+require 'will_paginate/array'
 class ApplicationController < ActionController::Base
   # Previene ataques CSRF
   protect_from_forgery with: :exception
-  before_action(:except => [:change_locale, :set_locale]) { authenticate_user! && has_teacher! }
+  before_action(:except => [:set_locale]) { authenticate_user! && has_teacher! }
   before_action :selected_teacher!, only: [:select_teacher, :assign_teacher]
   before_action :set_locale
 
@@ -23,7 +24,7 @@ class ApplicationController < ActionController::Base
       flash[:notice] = "Solo los profesores pueden hacer eso"
       redirect_to root_url
     end
-    @teachers = Teacher.wo_account
+    @teachers = Teacher.wo_account.paginate(page: params[:page], per_page: 10)
   end
 
   def assign_teacher

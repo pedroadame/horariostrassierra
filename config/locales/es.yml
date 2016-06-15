@@ -76,3 +76,7 @@ es:
   procesando: "Procesando, por favor espera..."
   import_error: "Error al importar XML"
   import_error_no_valid: "Parece que tu archivo XML no valida con nuestro esquema XSD. Por favor, revísalo y corrige posibles errores en tu XML."
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+    page_gap: "&hellip;"

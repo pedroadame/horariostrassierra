@@ -8,6 +8,6 @@ class RoomsController < ApplicationController
   end
 
   def list
-    @rooms = Room.all
+    @rooms = Room.where.not("abbreviation == ''").page(params[:page]).per_page(10)
   end
 end

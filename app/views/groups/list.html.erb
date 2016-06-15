@@ -7,8 +7,10 @@
     <% if @groups.any? %>
         <table class="mdl-data-table mdl-js-data-table full-width links">
           <tbody>
+          <tr>
+            <td><%= will_paginate %></td>
+          </tr>
           <% @groups.each do |r| %>
-              <% next if r.abbreviation == "GUARD" %>
               <tr>
                 <td><%= link_to r.name.mb_chars.upcase, group_schedule_path(id: r.id) %></td>
               </tr>

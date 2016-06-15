@@ -1,7 +1,7 @@
 class Room < ActiveRecord::Base
   validates :name, presence: true
   has_many :class_hours, dependent: :destroy
-  default_scope -> { order name: :asc }
+  default_scope -> { order abbreviation: :asc }
   class << self
     def empties
       rooms = Room.all

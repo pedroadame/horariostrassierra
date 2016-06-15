@@ -10,6 +10,7 @@ class Teacher < ActiveRecord::Base
   has_many :class_hours
   has_many :groups, -> { distinct }, through: :class_hours
   has_one :user
+
   class << self
     def in_guard
       ts = Teacher.all
@@ -23,7 +24,7 @@ class Teacher < ActiveRecord::Base
       guardias
     end
 
-    def wo_account
+    def wo_account(params = {})
       teachers = []
       Teacher.all.each do |t|
         teachers << t if t.user.nil?

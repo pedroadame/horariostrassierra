@@ -19,7 +19,7 @@ class TeachersController < ApplicationController
   end
 
   def teachers
-    @teachers = Teacher.all
+    @teachers = Teacher.page(params[:page]).per_page(10)
   end
 
   def groups
