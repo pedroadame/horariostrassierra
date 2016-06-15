@@ -4,6 +4,6 @@ class GroupsController < ApplicationController
   end
 
   def list
-    @groups = Group.where.not("abbreviation == 'GUARD'").page(params[:page])
+    @groups = Group.where.not("abbreviation == 'GUARD'").page(params[:page]).per_page(10)
   end
 end
