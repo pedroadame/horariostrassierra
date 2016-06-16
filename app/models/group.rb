@@ -8,6 +8,17 @@ class Group < ActiveRecord::Base
   has_many :class_hours
   has_many :teachers, -> { distinct }, through: :class_hours
 
+  def self.search(query)
+    q = query.replace_rare_chars
+    groups = []
+    Group.all.each do |g|
+      if g.name.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s.include?(q) || g.abbreviation.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s.include?(q)
+        groups << g
+      end
+    end
+    groups
+  end
+
   def search(params = {})
     self.class_hours.where(hour: Hour.search(day: params[:day],
                                              hour: params[:hour])).first

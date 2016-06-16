@@ -1,7 +1,7 @@
 <% if teachers.any? %>
     <table class="mdl-data-table mdl-js-data-table full-width links">
       <tbody>
-      <tr><td><%= will_paginate %></td></tr>
+      <tr><td><%= will_paginate teachers %></td></tr>
       <% teachers.each do |t| %>
           <tr>
             <td style="cursor: pointer"><%= link_to t.name.mb_chars.upcase, teacher_schedule_path(id: t.id) %></td>

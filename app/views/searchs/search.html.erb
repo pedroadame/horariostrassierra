@@ -1,0 +1,82 @@
+<% groups = @result[:groups] %>
+<% teachers = @result[:teachers] %>
+<% rooms = @result[:rooms] %>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--4-offset mdl-cell--4-col mdl-card mdl-shadow--6dp mdl-card__search-title">
+    <div class="mdl-card__title mdl-color-text--primary">
+      <form action="/<%= I18n.locale %>/search" method="get" style="width: 100%;">
+        <div style="width: 100%;" class="mdl-textfield mdl-js-textfield ">
+          <input id="q" name="q" type="text" class="mdl-textfield__input" value="<%= @param %>">
+          <label for="q" class="mdl-textfield__label"><%= t('search.form_title') %></label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="mdl-grid">
+  <!-- Profesores -->
+  <div class="mdl-cell mdl-cell--4-col mdl-card mdl-cell--top
+  mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+      <h2 class="mdl-card__title-text"><%= t('search.teacher') %>
+        : <%= teachers.count %></h2>
+    </div>
+    <% if teachers.any? %>
+        <table class="mdl-data-table mdl-js-data-table full-width links">
+          <tbody>
+          <% teachers.each do |r| %>
+              <tr>
+                <td><%= link_to r.name.mb_chars.upcase, teacher_schedule_path(id: r.id) %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    <% else %>
+        <h2><%= t("search.no_teachers") %></h2>
+    <% end %>
+  </div>
+  <!-- Grupos -->
+  <div class="mdl-cell mdl-cell--4-col mdl-card mdl-cell--top
+  mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+      <h2 class="mdl-card__title-text"><%= t('search.groups') %>
+        : <%= groups.count %></h2>
+    </div>
+    <% if groups.any? %>
+        <table class="mdl-data-table mdl-js-data-table full-width links">
+          <tbody>
+          <% groups.each do |r| %>
+              <tr>
+                <td><%= link_to r.name.mb_chars.upcase, group_schedule_path(id: r.id) %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    <% else %>
+        <h2><%= t("search.no_groups") %></h2>
+    <% end %>
+  </div>
+  <!-- Aulas -->
+  <div class="mdl-cell mdl-cell--4-col mdl-card mdl-cell--top mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+      <h2 class="mdl-card__title-text"><%= t('search.rooms') %>
+        : <%= rooms.count %></h2>
+    </div>
+    <div class="mdl-card__supporting_text">
+      <% if rooms.any? %>
+          <table class="mdl-data-table mdl-js-data-table full-width links">
+            <tbody>
+            <% rooms.each do |r| %>
+                <tr>
+                  <td><%= link_to r.name.mb_chars.upcase, group_schedule_path(id: r.id) %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      <% else %>
+          <h2><%= t("search.no_rooms") %></h2>
+      <% end %>
+    </div>
+
+  </div>
+</div>

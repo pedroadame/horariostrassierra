@@ -80,3 +80,13 @@ es:
     previous_label: "&#8592; Anterior"
     next_label: "Siguiente &#8594;"
     page_gap: "&hellip;"
+  search:
+    teacher: "Profesores encontrados"
+    rooms: "Aulas encontradas"
+    groups: "Grupos encontrados"
+    no_teachers: "No se han encontrado profesores"
+    no_rooms: "No se han encontrado aulas"
+    no_groups: "No se han encontrado grupos"
+    no_search_terms: "Por favor, introduce al menos un término de búsqueda"
+    form_title: "Buscar..."
+    title: "Buscar"

@@ -8,12 +8,12 @@ class ApplicationController < ActionController::Base
   before_action :selected_teacher!, only: [:select_teacher, :assign_teacher]
   before_action :set_locale
 
-  def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
-  end
-
   def self.default_url_options(options = {})
     { locale: I18n.locale }.merge options
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 
   def index
@@ -33,7 +33,6 @@ class ApplicationController < ActionController::Base
     user.save!
     redirect_to root_url
   end
-
 
   private
     def has_teacher!

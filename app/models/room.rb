@@ -11,6 +11,17 @@ class Room < ActiveRecord::Base
       end
       vacias
     end
+
+    def search(query)
+      q = query.replace_rare_chars
+      rooms = []
+      Room.all.each do |r|
+        if r.name.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s.start_with?(q) || r.abbreviation.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s.start_with?(q)
+          rooms << r
+        end
+      end
+      rooms
+    end
   end
 
   def clase_actual(params = {})

@@ -3,6 +3,9 @@
     <%= drawer_header %>
   </header>
   <nav class="mdl-navigation mdl-layout-spacer mdl-color--blue-grey-800">
+    <%= link_to search_path, class: 'mdl-navigation__link enlace-menu' do %>
+      <i class="material-icons">search</i> <%= t("search.title") %>
+    <% end %>
     <% unless current_user.admin? %>
         <%= link_to root_path, class: 'mdl-navigation__link enlace-menu' do %>
             <i class="material-icons">today</i> <%= t('horario.horario') %>

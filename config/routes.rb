@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get '/rooms/:id' => 'rooms#schedule', as: 'room_schedule'
     get '/rooms' => 'rooms#list', as: 'rooms_list'
     get '/xsd', to: redirect('/database.xsd'), as: 'xsd'
+    get '/search' => 'searchs#search', as: 'search'
     root to: 'teachers#current_user_schedule'
   end
 

@@ -31,6 +31,17 @@ class Teacher < ActiveRecord::Base
       end
       teachers
     end
+
+    def search(query)
+      q = query.replace_rare_chars
+      teachers = []
+      Teacher.all.each do |t|
+        if t.name.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s.start_with?(q) || t.abbreviation.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s.start_with?(q) || t.humanize.mb_chars.normalize(:kd).gsub(/[^\x00-\x7F]/n,'').downcase.to_s.start_with?(q)
+          teachers << t
+        end
+      end
+      teachers
+    end
   end
 
   def search(params = {})

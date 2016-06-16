@@ -98,3 +98,13 @@ en:
   procesando: "Processing XML. Please wait..."
   import_error: "An error raised when importing the XML file"
   import_error_no_valid: "It looks like your XML doesn't validate against our schema. Please have a look at it and correct possible errors on your XML."
+  search:
+    teacher: "Found teachers"
+    rooms: "Found rooms"
+    groups: "Found groups"
+    no_teachers: "No teachers found"
+    no_rooms: "No rooms found"
+    no_groups: "No groups found"
+    no_search_terms: "Please enter one search term at least"
+    form_title: "Search..."
+    title: "Search"
